@@ -1,0 +1,50 @@
+<p [ngClass]="'color2'">{{title}}</p>
+
+
+<!--<app-student-stand-alone></app-student-stand-alone>-->
+<div *ngIf="isVisible">
+  <p *ngFor="let product of products" [ngClass]="['color1','backgroundColor1']">
+    {{product}}
+  </p>
+</div>
+
+<button [disabled]="isVisible" (click)="welcomeMsg()">save</button>
+<br/>
+
+<!--two way data binding using property binding + event binding-->
+<input type="text" [value]='name' (input)='onNameChange($event)'/>
+<br/>
+
+{{name}}
+<!--two way data binding using ngModel -->
+<input type="text" [(ngModel)]="msg"/>
+<p>Here is the message {{msg | uppercase}} </p>
+<!--parametrise pipe-->
+<p>Date of Birth {{time | date : 'short'}} and salary was {{Salary | currency:'INR'}}</p>
+
+<!--using custom pipes-->
+<div *ngFor="let item of NumbersArray">
+  <p>Multiplication of {{item.num1}} and {{item.num2}} is
+    {{item.num1 | multiplication : item.num2}} </p>
+</div>
+
+<!--routing -->
+<a [routerLink]="['/student']" >student</a>
+<button (click)="teacherMethod()">teacher</button>
+
+<router-outlet></router-outlet>
+
+<h2>Disp msg {{displayMsg}}</h2>
+
+<div *ngFor="let userInfo of UserInfo">
+<li>{{userInfo.title}}</li>
+</div>
+
+<button (click)="counter()">Counter button</button>
+
+<p>Counter in app component {{count}}</p>
+<app-student [sampleData]='count' [dataa]="1223" (myData)="childData($event)" [students]="StuObj" >
+  please enter you {{name}}
+</app-student>
+
+
